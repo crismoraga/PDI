@@ -1,0 +1,88 @@
+{
+  "project": {
+    "name": "Pokedex Animal",
+    "version": "1.0.0",
+    "description": "Aplicación de reconocimiento de animales usando PDI y ML",
+    "author": "Estudiante PDI",
+    "date": "2025-09-08"
+  },
+  "camera": {
+    "default_index": 0,
+    "resolution": {
+      "width": 1280,
+      "height": 720
+    },
+    "fps": 30,
+    "auto_exposure": true
+  },
+  "model": {
+    "type": "MobileNetV2",
+    "input_size": [224, 224, 3],
+    "confidence_threshold": 0.3,
+    "top_predictions": 5,
+    "model_path": "model/animal_classifier.h5",
+    "labels_path": "model/class_labels.json"
+  },
+  "image_processing": {
+    "enhancement": {
+      "clahe_clip_limit": 3.0,
+      "clahe_tile_size": [8, 8],
+      "gaussian_blur_kernel": 5,
+      "median_blur_kernel": 5
+    },
+    "detection": {
+      "canny_threshold1": 50,
+      "canny_threshold2": 150,
+      "min_contour_area": 1000,
+      "bbox_padding": 20
+    },
+    "segmentation": {
+      "kmeans_k": 3,
+      "kmeans_iterations": 10,
+      "watershed_iterations": 2
+    }
+  },
+  "api": {
+    "wikipedia": {
+      "language": "es",
+      "search_results": 3,
+      "summary_length": 500,
+      "timeout": 10
+    },
+    "user_agent": "AnimalPokedex/1.0 (Educational Project)",
+    "retry_attempts": 3,
+    "retry_delay": 1
+  },
+  "ui": {
+    "window": {
+      "title": "🐾 Pokedex Animal - PDI Project",
+      "geometry": "1200x800",
+      "resizable": true
+    },
+    "video": {
+      "display_width": 640,
+      "display_height": 480,
+      "update_interval": 30
+    },
+    "colors": {
+      "primary": "#2E86AB",
+      "secondary": "#A23B72",
+      "success": "#F18F01",
+      "warning": "#C73E1D",
+      "background": "#F5F5F5"
+    }
+  },
+  "logging": {
+    "level": "INFO",
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    "file": "logs/pokedex.log",
+    "max_size": "10MB",
+    "backup_count": 5
+  },
+  "performance": {
+    "max_memory_usage": "1GB",
+    "prediction_timeout": 5,
+    "api_timeout": 10,
+    "cache_size": 100
+  }
+}

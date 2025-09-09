@@ -1,0 +1,13 @@
+opencv-python
+tensorflow
+keras
+numpy
+requests
+beautifulsoup4
+scikit-learn
+Pillow
+matplotlib
+seaborn
+wikipedia
+pandas
+urllib3
