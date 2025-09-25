@@ -149,6 +149,126 @@ class PokedexRepository:
         with self._lock, self._get_conn() as conn:
             cur = conn.execute(
                 "SELECT * FROM entries ORDER BY timestamp DESC LIMIT ? OFFSET ?",
+                (limit, offset)
+            )
+            return [self._row_to_entry(row) for row in cur.fetchall()]
+
+    def get_entry_by_id(self, entry_id: int) -> Optional[PokedexEntry]:
+        with self._lock, self._get_conn() as conn:
+            cur = conn.execute(
+                "SELECT * FROM entries WHERE id = ?", (entry_id,)
+            )
+            row = cur.fetchone()
+            return self._row_to_entry(row) if row else None
+
+    def search_by_name(self, name: str, limit: int = 50) -> List[PokedexEntry]:
+        with self._lock, self._get_conn() as conn:
+            cur = conn.execute(
+                "SELECT * FROM entries WHERE name LIKE ? ORDER BY timestamp DESC LIMIT ?",
+                (f"%{name}%", limit)
+            )
+            return [self._row_to_entry(row) for row in cur.fetchall()]
+
+    def mark_as_captured(self, entry_id: int) -> bool:
+        with self._lock, self._get_conn() as conn:
+            cur = conn.execute(
+                "UPDATE entries SET captured = 1 WHERE id = ?", (entry_id,)
+            )
+            return cur.rowcount > 0
+
+    def update_nickname(self, entry_id: int, nickname: Optional[str]) -> bool:
+        with self._lock, self._get_conn() as conn:
+            cur = conn.execute(
+                "UPDATE entries SET nickname = ? WHERE id = ?", (nickname, entry_id)
+            )
+            return cur.rowcount > 0
+
+    def get_statistics(self) -> Dict[str, Any]:
+        """Obtener estadísticas de la Pokédx."""
+        with self._lock, self._get_conn() as conn:
+            # Total de entradas
+            cur = conn.execute("SELECT COUNT(*) FROM entries")
+            total_entries = cur.fetchone()[0]
+            
+            # Entradas capturadas
+            cur = conn.execute("SELECT COUNT(*) FROM entries WHERE captured = 1")
+            captured_count = cur.fetchone()[0]
+            
+            # Especies únicas
+            cur = conn.execute("SELECT COUNT(DISTINCT name) FROM entries")
+            unique_species = cur.fetchone()[0]
+            
+            # Animal más común
+            cur = conn.execute(
+                "SELECT name, COUNT(*) as count FROM entries GROUP BY name ORDER BY count DESC LIMIT 1"
+            )
+            most_common = cur.fetchone()
+            
+            # Última captura
+            cur = conn.execute(
+                "SELECT timestamp FROM entries ORDER BY timestamp DESC LIMIT 1"
+            )
+            last_entry = cur.fetchone()
+            
+            return {
+                'total_entries': total_entries,
+                'captured_count': captured_count,
+                'unique_species': unique_species,
+                'completion_rate': (captured_count / total_entries) if total_entries > 0 else 0,
+                'most_common_animal': most_common[0] if most_common else None,
+                'most_common_count': most_common[1] if most_common else 0,
+                'last_entry_timestamp': last_entry[0] if last_entry else None
+            }
+
+    def _row_to_entry(self, row: sqlite3.Row) -> PokedexEntry:
+        """Convertir fila de base de datos a objeto PokedexEntry."""
+        return PokedexEntry(
+            id=row['id'],
+            timestamp=row['timestamp'],
+            name=row['name'],
+            confidence=row['confidence'],
+            summary=row['summary'],
+            habitat=row['habitat'],
+            diet=row['diet'],
+            characteristics=row['characteristics'],
+            conservation_status=row['conservation_status'],
+            scientific_name=row['scientific_name'],
+            source_url=row['source_url'],
+            image_path=row['image_path'],
+            nickname=row['nickname'],
+            captured=row['captured'],
+            notes=row['notes'],
+            dominant_color=row['dominant_color'],
+            dominant_color_rgb=row['dominant_color_rgb'],
+            relative_size=row['relative_size'],
+            bbox=row['bbox'],
+            features_json=row['features_json']
+        )
+
+    def backup_database(self, backup_path: str) -> bool:
+        """Crear respaldo de la base de datos."""
+        try:
+            import shutil
+            shutil.copy2(self.db_path, backup_path)
+            return True
+        except Exception:
+            return False
+
+    def cleanup_old_entries(self, days_old: int = 365) -> int:
+        """Limpiar entradas antiguas (solo no capturadas)."""
+        cutoff_time = time.time() - (days_old * 24 * 60 * 60)
+        
+        with self._lock, self._get_conn() as conn:
+            cur = conn.execute(
+                "DELETE FROM entries WHERE captured = 0 AND timestamp < ?",
+                (cutoff_time,)
+            )
+            return cur.rowcount
+
+    def list_entries(self, limit: int = 100, offset: int = 0) -> List[PokedexEntry]:
+        with self._lock, self._get_conn() as conn:
+            cur = conn.execute(
+                "SELECT * FROM entries ORDER BY timestamp DESC LIMIT ? OFFSET ?",
                 (limit, offset),
             )
             return [self._row_to_entry(r) for r in cur.fetchall()]
