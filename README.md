@@ -1,4 +1,4 @@
-# Pokédx Animal - Proyecto PDI
+# Pokédex Animal - Proyecto PDI
 
 ## Descripción
 
