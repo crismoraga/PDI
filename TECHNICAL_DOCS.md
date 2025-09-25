@@ -1,4 +1,4 @@
-# 📋 DOCUMENTACIÓN TÉCNICA - Pokedex Animal
+#  DOCUMENTACIÓN TÉCNICA - Pokedex Animal
 
 ## Resumen Ejecutivo
 
@@ -8,9 +8,9 @@ El proyecto **Pokedex Animal** es una aplicación completa de reconocimiento de 
 - **Procesamiento Digital de Imágenes** (PDI)
 - **APIs externas** (Wikipedia)
 
-## 🎯 Estado del Proyecto
+##  Estado del Proyecto
 
-### ✅ COMPLETADO
+###  COMPLETADO
 - [x] Estructura completa del proyecto
 - [x] Entorno virtual configurado
 - [x] Todas las dependencias instaladas
@@ -21,7 +21,7 @@ El proyecto **Pokedex Animal** es una aplicación completa de reconocimiento de 
 - [x] Suite de pruebas completa
 - [x] Documentación exhaustiva
 
-### 📊 Resultados de Pruebas
+###  Resultados de Pruebas
 ```
 OpenCV: ✅ PASÓ
 TensorFlow: ✅ PASÓ
@@ -33,7 +33,7 @@ Integración Completa: ✅ PASÓ
 RESULTADO: 6/6 pruebas exitosas (100%)
 ```
 
-## 🏗️ Arquitectura Técnica
+##  Arquitectura Técnica
 
 ### Componentes Principales
 
@@ -54,7 +54,7 @@ Imagen → Preprocesamiento → ML → Predicción → API → Información
 OpenCV     Filtros PDI    TensorFlow  Clases   Wikipedia  UI
 ```
 
-## 🔬 Técnicas de PDI Implementadas
+## Técnicas de PDI Implementadas
 
 ### 1. Mejora de Imagen
 - **CLAHE**: Mejora de contraste adaptativo
@@ -70,7 +70,7 @@ OpenCV     Filtros PDI    TensorFlow  Clases   Wikipedia  UI
 - **K-means Clustering**: Agrupación por color
 - **Watershed Algorithm**: Separación de objetos
 
-## 🤖 Machine Learning
+##  Machine Learning
 
 ### Modelo Base
 - **Arquitectura**: MobileNetV2
@@ -108,7 +108,7 @@ PDI/
 └── 📁 logs/                # Logs del sistema
 ```
 
-## 🚀 Instrucciones de Uso
+##  Instrucciones de Uso
 
 ### Instalación Rápida
 ```bash
@@ -161,7 +161,7 @@ pip install --upgrade -r requirements.txt
 - **Inferencia ML**: ~100-300ms
 - **Búsqueda API**: ~1-3 segundos
 
-## 🔧 Configuración Avanzada
+##  Configuración Avanzada
 
 ### Parámetros del Modelo (config.json)
 ```json
@@ -185,7 +185,7 @@ pip install --upgrade -r requirements.txt
 }
 ```
 
-## 🎓 Aspectos Académicos
+##  Aspectos Académicos
 
 ### Objetivos PDI Cumplidos
 - [x] Filtrado y mejora de imágenes
@@ -209,7 +209,7 @@ pip install --upgrade -r requirements.txt
 - [x] Procesamiento en tiempo real
 - [x] Gestión de errores
 
-## 📊 Evaluación del Proyecto
+##  Evaluación del Proyecto
 
 ### Criterios Cumplidos (Estimado)
 
@@ -224,7 +224,7 @@ pip install --upgrade -r requirements.txt
 
 **Total Estimado: 90/100**
 
-## 🔮 Extensiones Futuras
+##  Extensiones Futuras
 
 ### Corto Plazo
 - [ ] Mejora del modelo con dataset específico
@@ -237,7 +237,7 @@ pip install --upgrade -r requirements.txt
 - [ ] Base de datos local
 - [ ] Realidad aumentada
 
-## 👥 Créditos y Referencias
+##  Créditos y Referencias
 
 ### Tecnologías Utilizadas
 - **OpenCV**: Biblioteca de visión por computadora
@@ -252,6 +252,3 @@ pip install --upgrade -r requirements.txt
 
 ---
 
-**Proyecto desarrollado para la asignatura de Procesamiento Digital de Imágenes**  
-**Fecha**: Septiembre 2025  
-**Estado**: ✅ COMPLETADO Y FUNCIONAL

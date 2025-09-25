@@ -11,7 +11,6 @@ import numpy as np
 import os
 import pickle
 import json
-
 class AnimalClassifier:
     """
     Clasificador de animales usando Transfer Learning con MobileNetV2

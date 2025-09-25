@@ -34,7 +34,7 @@ class AnimalInfoAPI:
         Returns:
             dict: Información del animal
         """
-        print(f"🔍 Buscando información para: {animal_name}")
+        print(f" Buscando información para: {animal_name}")
         
         info = {
             'name': animal_name,
@@ -73,7 +73,7 @@ class AnimalInfoAPI:
             dict: Información de Wikipedia
         """
         try:
-            print("📚 Consultando Wikipedia...")
+            print(" Consultando Wikipedia...")
             
             # Buscar páginas relacionadas
             search_results = wikipedia.search(animal_name, results=3)
@@ -121,7 +121,7 @@ class AnimalInfoAPI:
             }
             
         except Exception as e:
-            print(f"⚠️ Error al consultar Wikipedia: {str(e)}")
+            print(f" Error al consultar Wikipedia: {str(e)}")
             return None
             
     def _extract_habitat_info(self, content):
@@ -268,7 +268,7 @@ class AnimalInfoAPI:
 
 def test_animal_api():
     """Función de prueba para la API de animales"""
-    print("🧪 Probando API de información de animales...")
+    print(" Probando API de información de animales...")
     
     api = AnimalInfoAPI()
     
@@ -276,15 +276,15 @@ def test_animal_api():
     test_animals = ["perro", "gato", "león"]
     
     for animal in test_animals:
-        print(f"\n🔍 Probando con: {animal}")
+        print(f"\n Probando con: {animal}")
         info = api.get_animal_info(animal)
         
         if info:
-            print(f"✅ Información obtenida para {animal}")
+            print(f" Información obtenida para {animal}")
             print(f"   Resumen: {info.get('summary', 'N/A')[:100]}...")
             print(f"   Hábitat: {info.get('habitat', 'N/A')[:100]}...")
         else:
-            print(f"❌ No se pudo obtener información para {animal}")
+            print(f" No se pudo obtener información para {animal}")
             
         time.sleep(1)  # Pausa para no sobrecargar la API
 

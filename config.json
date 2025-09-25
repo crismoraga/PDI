@@ -82,7 +82,7 @@
   "performance": {
     "max_memory_usage": "1GB",
     "prediction_timeout": 5,
-    "api_timeout": 10,
+    "api_timeout": 15,
     "cache_size": 100
   }
 }

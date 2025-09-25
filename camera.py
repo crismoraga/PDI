@@ -6,7 +6,6 @@ import cv2
 import numpy as np
 import threading
 import time
-
 class CameraCapture:
     """
     Clase para manejar la captura de video desde la cámara

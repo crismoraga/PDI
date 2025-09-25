@@ -1,24 +1,12 @@
-"""
-Módulo para manejo de cámara usando OpenCV
-"""
-
+# utils/camera.py
 import cv2
 import numpy as np
 import threading
 import time
 
 class CameraCapture:
-    """
-    Clase para manejar la captura de video desde la cámara
-    """
     
     def __init__(self, camera_index=0):
-        """
-        Inicializar la captura de cámara
-        
-        Args:
-            camera_index (int): Índice de la cámara (0 para la cámara principal)
-        """
         self.camera_index = camera_index
         self.cap = None
         self.is_running = False
@@ -36,13 +24,14 @@ class CameraCapture:
             self.cap = cv2.VideoCapture(self.camera_index)
             
             if not self.cap.isOpened():
-                print(f"❌ No se puede abrir la cámara {self.camera_index}")
+                print(f"No se puede abrir la camara {self.camera_index}")
                 return False
                 
             # Configurar propiedades de la cámara
-            self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
-            self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
-            self.cap.set(cv2.CAP_PROP_FPS, 30)
+            # Valores por defecto optimizados para Raspberry Pi
+            self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+            self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+            self.cap.set(cv2.CAP_PROP_FPS, 15)
             
             self.is_running = True
             
@@ -50,11 +39,11 @@ class CameraCapture:
             self.capture_thread = threading.Thread(target=self._capture_loop, daemon=True)
             self.capture_thread.start()
             
-            print("✅ Cámara iniciada correctamente")
+            print("Camara iniciada correctamente")
             return True
             
         except Exception as e:
-            print(f"❌ Error al iniciar la cámara: {str(e)}")
+            print(f"Error al iniciar la camara: {str(e)}")
             return False
             
     def stop(self):
@@ -65,7 +54,7 @@ class CameraCapture:
             self.cap.release()
             self.cap = None
             
-        print("⏹️ Cámara detenida")
+    print("Camara detenida")
         
     def _capture_loop(self):
         """Loop de captura en hilo separado"""
@@ -76,7 +65,7 @@ class CameraCapture:
                 with self.lock:
                     self.current_frame = frame.copy()
             else:
-                print("⚠️ No se pudo leer frame de la cámara")
+                print("No se pudo leer frame de la camara")
                 time.sleep(0.1)
                 
     def get_frame(self):
@@ -139,39 +128,39 @@ class CameraCapture:
             
         try:
             cv2.imwrite(filename, frame)
-            print(f"📸 Foto guardada: {filename}")
+            print(f"Foto guardada: {filename}")
             return filename
         except Exception as e:
-            print(f"❌ Error al guardar foto: {str(e)}")
+            print(f"Error al guardar foto: {str(e)}")
             return None
 
 def test_camera():
     """Función de prueba para la cámara"""
-    print("🧪 Probando la cámara...")
+    print("Probando la camara...")
     
     camera = CameraCapture()
     
     if camera.start():
-        print("✅ Cámara iniciada correctamente")
+        print("Camara iniciada correctamente")
         
         # Mostrar info de la cámara
         info = camera.get_camera_info()
         if info:
-            print(f"📹 Resolución: {info['width']}x{info['height']}")
-            print(f"🎬 FPS: {info['fps']}")
+            print(f"Resolucion: {info['width']}x{info['height']}")
+            print(f"FPS: {info['fps']}")
         
         # Capturar algunos frames
         for i in range(5):
             frame = camera.get_frame()
             if frame is not None:
-                print(f"✅ Frame {i+1} capturado: {frame.shape}")
+                print(f"Frame {i+1} capturado: {frame.shape}")
             else:
-                print(f"❌ No se pudo capturar frame {i+1}")
+                print(f"No se pudo capturar frame {i+1}")
             time.sleep(1)
             
         camera.stop()
     else:
-        print("❌ No se pudo iniciar la cámara")
+        print("No se pudo iniciar la camara")
 
 if __name__ == "__main__":
     test_camera()

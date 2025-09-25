@@ -1,0 +1,203 @@
+{
+  "project": {
+    "name": "Pokédx Animal",
+    "version": "2.0.0",
+    "description": "Aplicación avanzada de reconocimiento de animales usando PDI y ML optimizada para Raspberry Pi",
+    "author": "Proyecto PDI Avanzado",
+    "date": "2025-09-24",
+    "platform": "cross-platform",
+    "optimized_for": "raspberry_pi"
+  },
+  "camera": {
+    "default_index": 0,
+    "resolution": {
+      "desktop": {
+        "width": 1280,
+        "height": 720
+      },
+      "raspberry_pi": {
+        "width": 640,
+        "height": 480
+      },
+      "mobile": {
+        "width": 480,
+        "height": 360
+      }
+    },
+    "fps": {
+      "desktop": 30,
+      "raspberry_pi": 15,
+      "mobile": 10
+    },
+    "auto_exposure": true,
+    "auto_white_balance": true,
+    "buffer_size": 2,
+    "fourcc": "MJPG"
+  },
+  "model": {
+    "primary": {
+      "type": "TensorFlowLite",
+      "model_path": "data/models/mobilenet_v2_animal.tflite",
+      "labels_path": "data/models/labels.txt",
+      "input_size": [224, 224, 3],
+      "quantized": true,
+      "use_edge_tpu": false
+    },
+    "fallback": {
+      "type": "Keras",
+      "model_path": "model/animal_classifier.h5",
+      "labels_path": "model/class_labels.json"
+    },
+    "inference": {
+      "confidence_threshold": 0.7,
+      "top_predictions": 5,
+      "batch_size": 1,
+      "num_threads": 4,
+      "enable_gpu_acceleration": false
+    }
+  },
+  "image_processing": {
+    "enhancement": {
+      "clahe_clip_limit": 2.0,
+      "clahe_tile_size": [8, 8],
+      "gaussian_blur_kernel": 3,
+      "median_blur_kernel": 3,
+      "gamma_correction": 1.2,
+      "brightness_adjustment": 0.1
+    },
+    "detection": {
+      "canny_threshold1": 50,
+      "canny_threshold2": 150,
+      "min_contour_area": 500,
+      "bbox_padding": 10,
+      "morphology_kernel_size": 5
+    },
+    "segmentation": {
+      "kmeans_k": 5,
+      "kmeans_iterations": 20,
+      "kmeans_attempts": 3,
+      "watershed_iterations": 3,
+      "watershed_threshold": 0.3
+    },
+    "visual_features": {
+      "dominant_colors": 3,
+      "color_space": "HSV",
+      "size_analysis": true,
+      "shape_analysis": true
+    }
+  },
+  "api": {
+    "wikipedia": {
+      "language": "es",
+      "search_results": 3,
+      "summary_length": 800,
+      "timeout": 15,
+      "retry_attempts": 3,
+      "cache_duration": 3600,
+      "fallback_language": "en"
+    },
+    "rate_limiting": {
+      "requests_per_minute": 30,
+      "burst_limit": 10
+    }
+  },
+  "database": {
+    "path": "data/pokedx.db",
+    "backup_interval": 3600,
+    "max_entries": 10000,
+    "auto_vacuum": true,
+    "wal_mode": true
+  },
+  "ui": {
+    "theme": "dark",
+    "window": {
+      "width": 1280,
+      "height": 820,
+      "min_width": 1100,
+      "min_height": 720,
+      "resizable": true,
+      "fullscreen_supported": true
+    },
+    "colors": {
+      "background": "#0f172a",
+      "panel": "#111c2f",
+      "accent": "#1f2d49",
+      "focus": "#3a6ff7",
+      "text": "#f1f5f9",
+      "muted": "#94a3b8"
+    },
+    "fonts": {
+      "main": "Segoe UI",
+      "monospace": "Consolas",
+      "size_title": 22,
+      "size_header": 14,
+      "size_body": 11
+    },
+    "performance": {
+      "video_refresh_ms": 40,
+      "ui_update_interval": 100,
+      "enable_vsync": false
+    }
+  },
+  "logging": {
+    "level": "INFO",
+    "format": "%(asctime)s - %(levelname)s - %(message)s",
+    "file_path": "logs/pokedx.log",
+    "max_file_size": "10MB",
+    "backup_count": 5,
+    "console_output": true
+  },
+  "performance": {
+    "raspberry_pi": {
+      "cpu_governor": "performance",
+      "memory_limit_mb": 1024,
+      "swap_usage": true,
+      "thermal_throttling": 85,
+      "enable_multithreading": true,
+      "thread_pool_size": 2,
+      "cache_size": 50
+    },
+    "desktop": {
+      "memory_limit_mb": 2048,
+      "enable_multithreading": true,
+      "thread_pool_size": 4,
+      "cache_size": 200,
+      "gpu_acceleration": "auto"
+    },
+    "optimization": {
+      "preload_model": true,
+      "image_cache": true,
+      "result_cache": true,
+      "async_processing": true
+    }
+  },
+  "directories": {
+    "snapshots": "data/snapshots",
+    "exports": "data/exports",
+    "models": "data/models",
+    "cache": "data/cache",
+    "logs": "logs",
+    "backups": "data/backups"
+  },
+  "features": {
+    "auto_capture": false,
+    "continuous_detection": false,
+    "animal_tracking": false,
+    "batch_processing": false,
+    "export_formats": ["json", "markdown", "csv"],
+    "search_history": true,
+    "statistics": true
+  },
+  "experimental": {
+    "edge_tpu_support": true,
+    "neural_compute_stick": false,
+    "distributed_processing": false,
+    "cloud_sync": false
+  },
+  "security": {
+    "data_encryption": false,
+    "secure_api_calls": true,
+    "privacy_mode": false,
+    "anonymize_data": false
+  }
+}

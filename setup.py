@@ -1,8 +1,4 @@
 #!/usr/bin/env python3
-"""
-Script de configuración y prueba del entorno para Pokedex Animal
-"""
-
 import sys
 import os
 import subprocess

@@ -1,7 +1,4 @@
-"""
-Módulo para procesamiento de imágenes usando OpenCV y técnicas de PDI
-"""
-
+# utils/image_processing.py
 import cv2
 import numpy as np
 from PIL import Image

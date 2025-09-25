@@ -1,7 +1,6 @@
 """
 Módulo para obtener información de animales desde APIs web
 """
-
 import requests
 import json
 import time

@@ -1,79 +1,115 @@
-# 🐾 Pokedex Animal - Proyecto PDI
+# Pokédx Animal - Proyecto PDI
 
 ## Descripción
 
-**Pokedex Animal** es una aplicación de reconocimiento de animales en tiempo real que utiliza visión por computadora, machine learning e inteligencia artificial para identificar animales a través de la cámara y proporcionar información detallada sobre ellos, similar a una Pokédex pero para animales reales.
+**Pokédx Animal** es una aplicación avanzada de reconocimiento de animales en tiempo real que utiliza visión por computadora, machine learning e inteligencia artificial para identificar animales a través de la cámara y proporcionar información detallada sobre ellos, replicando el funcionamiento de una Pokédx pero para animales reales.
 
-## 🎯 Objetivos del Proyecto
+## Objetivos del Proyecto
 
 - **Principal**: Crear una aplicación que identifique animales en tiempo real usando la cámara
-- **Secundario**: Aplicar técnicas de Procesamiento Digital de Imágenes (PDI)
-- **Técnico**: Integrar OpenCV, TensorFlow y APIs web en una aplicación funcional
-- **Educativo**: Demostrar el uso práctico de ML/AI en aplicaciones reales
+- **Secundario**: Aplicar técnicas avanzadas de Procesamiento Digital de Imágenes (PDI)
+- **Técnico**: Integrar OpenCV, TensorFlow Lite y APIs web en una aplicación optimizada
+- **Educativo**: Demostrar el uso práctico de ML/AI en aplicaciones reales para Raspberry Pi
 
-## 🛠️ Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 ### Core Technologies
+
 - **Python 3.8+**: Lenguaje principal
-- **OpenCV**: Captura y procesamiento de video/imágenes
-- **TensorFlow/Keras**: Machine Learning y clasificación de imágenes
-- **Tkinter**: Interfaz gráfica de usuario
+- **OpenCV 4.8+**: Captura y procesamiento de video/imágenes
+- **TensorFlow Lite**: Machine Learning optimizado para edge devices
+- **Tkinter**: Interfaz gráfica moderna y responsiva
+- **SQLite**: Base de datos Pokédx para persistencia de entradas
 
 ### Machine Learning
-- **MobileNetV2**: Modelo preentrenado para transfer learning
+
+- **MobileNetV2**: Modelo preentrenado optimizado para dispositivos móviles
+- **TensorFlow Lite Runtime**: Inferencia rápida en Raspberry Pi
 - **Transfer Learning**: Aprovecha conocimiento de ImageNet
-- **Clasificación de imágenes**: Reconocimiento de especies animales
+- **Edge TPU Support**: Aceleración opcional con Coral Edge TPU
 
 ### APIs y Datos
-- **Wikipedia API**: Información detallada de animales
+
+- **Wikipedia API**: Información detallada y actualizada de animales
 - **BeautifulSoup**: Web scraping para datos adicionales
-- **Requests**: Cliente HTTP para APIs
+- **Requests**: Cliente HTTP robusto para APIs
 
 ### Procesamiento de Imágenes
+
 - **Filtros de mejora**: CLAHE, reducción de ruido
 - **Detección de objetos**: Contornos y bounding boxes
-- **Segmentación**: K-means y Watershed
-- **Normalización**: Preprocesamiento para ML
+- **Segmentación avanzada**: K-means y Watershed
+- **Análisis visual**: Color dominante, tamaño relativo, características
 
-## 📁 Estructura del Proyecto
+## Características Principales
 
-```
+### Funcionalidades Pokédx
+
+- **Captura en tiempo real**: Reconocimiento automático de animales
+- **Base de datos persistente**: Almacena cada encuentro con timestamp
+- **Sistema de "capturados"**: Marca animales vistos vs capturados
+- **Vista de detalle**: Información completa de cada entrada
+- **Exportación**: JSON y Markdown para análisis externos
+- **Búsqueda y filtros**: Encuentra entradas por nombre o estado
+
+### Características Técnicas
+
+- **Optimizado para Raspberry Pi**: Rendimiento optimizado para hardware limitado
+- **Detección de características visuales**: Color, tamaño, bounding box
+- **Interfaz moderna**: UI responsiva con tema oscuro
+- **Manejo de errores robusto**: Fallbacks automáticos
+- **Logging completo**: Trazabilidad de operaciones
+- **Configuración flexible**: Parámetros ajustables por JSON
+
+## Estructura del Proyecto
+
+```text
 PDI/
-├── main.py                 # Aplicación principal
-├── requirements.txt        # Dependencias Python
-├── README.md              # Documentación (este archivo)
-├── data/                  # Datos de entrenamiento (futuro)
-├── model/                 # Modelos de Machine Learning
+├── main.py                    # Aplicación principal
+├── demo.py                   # Versión demo sin cámara
+├── requirements.txt          # Dependencias Python
+├── config.json              # Configuración de la aplicación
+├── RASPBERRY_PI_SETUP.md    # Guía detallada para Raspberry Pi
+├── INSTALL_RPI.md           # Instrucciones de instalación Pi
+├── TECHNICAL_DOCS.md        # Documentación técnica
+├── data/                    # Datos y modelos
+│   ├── snapshots/          # Imágenes capturadas
+│   ├── exports/            # Exportaciones JSON/MD
+│   └── pokedx.db          # Base de datos SQLite
+├── model/                   # Modelos de Machine Learning
 │   ├── __init__.py
-│   └── animal_classifier.py
-└── utils/                 # Módulos auxiliares
-    ├── __init__.py
-    ├── camera.py          # Manejo de cámara
-    ├── image_processing.py # Procesamiento de imágenes
-    └── api.py            # APIs externas
+│   ├── animal_classifier.py # Clasificador Keras
+│   └── tflite_classifier.py # Clasificador TensorFlow Lite
+├── utils/                   # Módulos auxiliares
+│   ├── __init__.py
+│   ├── camera.py           # Manejo de cámara
+│   ├── image_processing.py # Procesamiento de imágenes
+│   └── api.py             # APIs externas
+├── pokedx/                 # Sistema Pokédx
+│   ├── __init__.py
+│   └── db.py              # Repositorio y modelos de datos
+├── scripts/                # Scripts de utilidad
+│   └── download_tflite_model.py # Descarga de modelos
+└── tests/                  # Suite de pruebas
+    ├── test_all.py
+    └── final_check.py
 ```
 
-## 🚀 Instalación y Configuración
+## Instalación Rápida (Desktop)
 
 ### Prerrequisitos
 
 - Python 3.8 o superior
 - Webcam/cámara conectada
-- Conexión a Internet (para búsqueda de información)
+- Conexión a Internet
 
-### Paso 1: Clonar/Descargar el Proyecto
+### Instalación
 
 ```bash
-# Si usas Git
+# Clonar el proyecto
 git clone <url-del-repositorio>
 cd PDI
 
-# O simplemente descargar y extraer en la carpeta PDI
-```
-
-### Paso 2: Crear Entorno Virtual
-
-```bash
 # Crear entorno virtual
 python -m venv venv
 
@@ -82,258 +118,186 @@ python -m venv venv
 venv\Scripts\activate
 # En Linux/Mac:
 source venv/bin/activate
-```
 
-### Paso 3: Instalar Dependencias
-
-```bash
+# Instalar dependencias
 pip install -r requirements.txt
-```
 
-### Paso 4: Verificar Instalación
-
-```bash
-# Probar cámara
-python utils/camera.py
-
-# Probar procesamiento de imágenes
-python utils/image_processing.py
-
-# Probar clasificador
-python model/animal_classifier.py
-
-# Probar API
-python utils/api.py
-```
-
-## 🎮 Uso de la Aplicación
-
-### Ejecutar la Aplicación
-
-```bash
+# Ejecutar aplicación
 python main.py
 ```
 
-### Interfaz de Usuario
+## Instalación en Raspberry Pi
 
-1. **Iniciar Cámara**: Presiona "🎥 Iniciar Cámara" para activar la webcam
-2. **Vista en Vivo**: El video aparece en tiempo real en el panel izquierdo
-3. **Capturar y Analizar**: Presiona "📸 Capturar y Analizar" para identificar el animal
-4. **Ver Información**: La información aparece en el panel derecho
-5. **Detener**: Usa "⏹️ Detener Cámara" para pausar o "❌ Salir" para cerrar
+Para una instalación completa y optimizada en Raspberry Pi, consulta la guía detallada en:
 
-### Flujo de Trabajo
+- **[RASPBERRY_PI_SETUP.md](RASPBERRY_PI_SETUP.md)** - Guía paso a paso completa
+- **[INSTALL_RPI.md](INSTALL_RPI.md)** - Instrucciones técnicas específicas
 
-1. **Captura**: La cámara captura frames en tiempo real
-2. **Preprocesamiento**: OpenCV mejora la imagen (filtros, normalización)
-3. **Clasificación**: TensorFlow/MobileNetV2 identifica el animal
-4. **Búsqueda**: Se consulta Wikipedia para obtener información
-5. **Visualización**: Se muestra el resultado en la interfaz
+### Resumen Rápido Pi
 
-## 🧠 Arquitectura del Sistema
+```bash
+# Actualizar sistema
+sudo apt update && sudo apt upgrade -y
 
-### Módulo Principal (`main.py`)
-- **AnimalPokedexApp**: Clase principal de la aplicación
-- **Interfaz GUI**: Tkinter para la experiencia de usuario
-- **Coordinación**: Integra todos los módulos
+# Instalar dependencias del sistema
+sudo apt install -y python3-dev python3-pip python3-venv
+sudo apt install -y libatlas-base-dev libjpeg-dev libpng-dev
 
-### Módulo de Cámara (`utils/camera.py`)
-- **CameraCapture**: Manejo de webcam con OpenCV
-- **Threading**: Captura asíncrona de frames
-- **Configuración**: Resolución, FPS, propiedades de cámara
+# Configurar proyecto
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
 
-### Módulo de Procesamiento (`utils/image_processing.py`)
-- **ImageProcessor**: Algoritmos de PDI
-- **Filtros**: CLAHE, Gaussian blur, sharpening
-- **Detección**: Contornos, bounding boxes
-- **Segmentación**: K-means clustering, Watershed
-
-### Módulo de Clasificación (`model/animal_classifier.py`)
-- **AnimalClassifier**: Red neuronal con transfer learning
-- **MobileNetV2**: Modelo base preentrenado
-- **Traducción**: Mapeo inglés-español de especies
-- **Predicción**: Clasificación con scores de confianza
-
-### Módulo de APIs (`utils/api.py`)
-- **AnimalInfoAPI**: Cliente para fuentes de información
-- **Wikipedia**: Consultas automáticas
-- **Extracción**: Hábitat, dieta, características
-- **Formateo**: Presentación legible de datos
-
-## 🔬 Técnicas de PDI Implementadas
-
-### 1. Mejora de Imágenes
-- **CLAHE (Contrast Limited Adaptive Histogram Equalization)**
-  - Mejora el contraste local
-  - Evita la amplificación excesiva de ruido
-  
-- **Filtro Mediano**
-  - Reducción de ruido salt-and-pepper
-  - Preserva bordes importantes
-
-- **Sharpening**
-  - Realza detalles y bordes
-  - Kernel de convolución personalizado
-
-### 2. Detección y Segmentación
-- **Detección de Bordes (Canny)**
-  ```python
-  edges = cv2.Canny(blurred, 50, 150)
-  ```
-
-- **Segmentación por Contornos**
-  ```python
-  contours, _ = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-  ```
-
-- **K-means Clustering**
-  ```python
-  _, labels, centers = cv2.kmeans(data, k, None, criteria, 10, cv2.KMEANS_RANDOM_CENTERS)
-  ```
-
-### 3. Preprocesamiento para ML
-- **Normalización**: Valores 0-255 → 0-1
-- **Redimensionado**: Ajuste a 224x224 (entrada MobileNetV2)
-- **Formato de lote**: Expansión de dimensiones para predicción
-
-## 🤖 Machine Learning
-
-### Modelo Base: MobileNetV2
-- **Arquitectura**: Efficient neural network para móviles
-- **Preentrenamiento**: ImageNet (1000 clases, incluyendo animales)
-- **Transfer Learning**: Aprovecha conocimiento previo
-
-### Pipeline de Clasificación
-1. **Entrada**: Imagen 224x224x3
-2. **Preprocesamiento**: MobileNetV2 preprocessing
-3. **Predicción**: Forward pass por la red
-4. **Decodificación**: Top-5 predicciones de ImageNet
-5. **Filtrado**: Solo clases de animales
-6. **Traducción**: Nombres en español
-
-### Clases de Animales Soportadas
-- **Mamíferos**: Perros, gatos, caballos, vacas, osos, etc.
-- **Aves**: Águilas, loros, pingüinos, flamencos, etc.
-- **Reptiles**: Serpientes, lagartos, tortugas, etc.
-- **Animales Marinos**: Ballenas, delfines, tiburones, etc.
-- **Insectos**: Mariposas, abejas, escarabajos, etc.
-
-## 🌐 Integración con APIs
-
-### Wikipedia API
-```python
-import wikipedia
-wikipedia.set_lang("es")
-page = wikipedia.page(animal_name)
-summary = page.summary
+# Ejecutar
+python main.py
 ```
 
-### Extracción de Información
-- **Hábitat**: Búsqueda por palabras clave relacionadas
-- **Dieta**: Identificación de patrones alimentarios
-- **Características**: Descripción física y comportamiento
-- **Conservación**: Estado de amenaza/protección
+## Uso de la Aplicación
 
-## 📊 Métricas y Rendimiento
+### Interfaz Principal
 
-### Precisión del Modelo
-- **Modelo base**: MobileNetV2 (Top-1: ~71%, Top-5: ~90% en ImageNet)
-- **Animales específicos**: Variable según especie y calidad de imagen
-- **Filtrado**: Solo predicciones con >30% confianza
+1. **Iniciar cámara**: Botón para activar el feed de video
+2. **Capturar y analizar**: Procesa la imagen actual
+3. **Guardar captura**: Marca el animal como "capturado"
+4. **Vista de detalle**: Muestra información completa
+5. **Exportar**: Genera archivos JSON o Markdown
 
-### Rendimiento del Sistema
-- **FPS de cámara**: ~30 FPS
-- **Tiempo de predicción**: ~100-300ms
-- **Tiempo de búsqueda API**: ~1-3 segundos
-- **Memoria RAM**: ~500MB-1GB (según modelo)
+### Flujo Pokédx
 
-## 🐛 Solución de Problemas
+1. Inicia la cámara
+2. Apunta a un animal
+3. Presiona "Capturar y analizar"
+4. La IA identifica la especie
+5. Se busca información automáticamente
+6. Se guarda la entrada en la Pokédx
+7. Opcionalmente marca como "capturado"
 
-### Problemas Comunes
+### Características Visuales
 
-1. **Cámara no detectada**
-   ```python
-   # Verificar índice de cámara
-   python utils/camera.py
-   ```
+La aplicación analiza automáticamente:
+- **Color dominante**: Identifica el color principal
+- **Tamaño relativo**: Porcentaje del frame ocupado
+- **Bounding box**: Coordenadas de detección
+- **Confianza**: Nivel de certeza de la identificación
 
-2. **Error de dependencias**
-   ```bash
-   pip install --upgrade tensorflow opencv-python
-   ```
+## Optimizaciones para Raspberry Pi
 
-3. **Predicciones incorrectas**
-   - Mejorar iluminación
-   - Acercarse al animal
-   - Evitar fondos complejos
+### Configuración de Rendimiento
 
-4. **Error de conexión API**
-   - Verificar conexión a Internet
-   - Reintentar después de unos segundos
+- Resolución optimizada: 640x480 @ 15fps
+- TensorFlow Lite Runtime para menor uso de memoria
+- Procesamiento en hilos separados
+- Cache inteligente de resultados
+- Configuración automática de CPU governor
 
-### Logs y Debugging
-- Los errores se muestran en consola
-- Usar modo verbose para más detalles
-- Verificar cada módulo individualmente
+### Soporte Edge TPU
 
-## 🔮 Futuras Mejoras
+Compatible con Google Coral Edge TPU para aceleración de IA:
 
-### Modelo de ML
-- [ ] Entrenar modelo específico para animales
-- [ ] Aumentar dataset con más especies
-- [ ] Implementar detección de múltiples animales
-- [ ] Agregar reconocimiento de sonidos
+```bash
+# Instalar soporte Edge TPU
+sudo apt install libedgetpu1-std
+pip install pycoral
 
-### Funcionalidades
-- [ ] Modo offline (base de datos local)
-- [ ] Historial de detecciones
-- [ ] Exportar información a PDF
-- [ ] Modo de comparación de especies
+# Usar modelo Edge TPU
+export USE_EDGE_TPU=true
+python main.py
+```
 
-### Técnicas Avanzadas
-- [ ] YOLO para detección en tiempo real
-- [ ] Segmentación semántica
-- [ ] Análisis de comportamiento
-- [ ] Realidad aumentada
+## API y Extensibilidad
 
-### Interfaz
-- [ ] Versión web (Flask/Django)
-- [ ] App móvil (React Native)
-- [ ] Temas personalizables
-- [ ] Múltiples idiomas
+### Configuración JSON
 
-## 📚 Referencias Académicas
+```json
+{
+    "camera": {
+        "resolution": [640, 480],
+        "fps": 15,
+        "auto_exposure": true
+    },
+    "ml": {
+        "confidence_threshold": 0.7,
+        "model_path": "data/models/mobilenet_v2.tflite",
+        "use_edge_tpu": false
+    },
+    "ui": {
+        "theme": "dark",
+        "language": "es",
+        "window_size": [1280, 820]
+    }
+}
+```
 
-1. **MobileNetV2**: Sandler, M., et al. "MobileNetV2: Inverted Residuals and Linear Bottlenecks." CVPR 2018.
+### Base de Datos
 
-2. **CLAHE**: Zuiderveld, K. "Contrast Limited Adaptive Histogram Equalization." Graphics Gems IV, 1994.
+Esquema SQLite completo con campos:
+- Información básica (nombre, confianza, timestamp)
+- Metadata (nickname, notas, estado capturado)
+- Características visuales (color, tamaño, bbox)
+- Información externa (Wikipedia, hábitat, dieta)
 
-3. **Transfer Learning**: Pan, S.J., Yang, Q. "A Survey on Transfer Learning." IEEE TKDE, 2010.
+## Testing y Validación
 
-4. **OpenCV**: Bradski, G. "The OpenCV Library." Dr. Dobb's Journal, 2000.
+### Suite de Pruebas
 
-## 👥 Créditos
+```bash
+# Ejecutar todas las pruebas
+python test_all.py
 
-- **Desarrollo**: Estudiante de Procesamiento Digital de Imágenes
-- **Asignatura**: PDI - Universidad
-- **Profesor**: [Nombre del profesor]
-- **Fecha**: Septiembre 2025
+# Verificación completa del sistema
+python final_check.py
 
-## 📄 Licencia
+# Demo sin cámara (para desarrollo)
+python demo.py
+```
 
-Este proyecto es desarrollado con fines educativos para la asignatura de Procesamiento Digital de Imágenes.
+### Resultado Esperado
 
-## 🤝 Contribuciones
+```
+✅ OpenCV: PASÓ
+✅ TensorFlow Lite: PASÓ  
+✅ Cámara: PASÓ
+✅ Modelo ML: PASÓ
+✅ Base de datos: PASÓ
+✅ APIs externas: PASÓ
 
-Para mejoras o reportar bugs:
-1. Fork del proyecto
-2. Crear branch para feature
-3. Commit de cambios
-4. Push al branch
-5. Crear Pull Request
+RESULTADO: 6/6 pruebas exitosas (100%)
+```
 
----
+## Contribución y Desarrollo
 
-**¡Gracias por usar Pokedex Animal! 🐾**
+### Estructura de Desarrollo
 
-*Proyecto desarrollado con ❤️ para la asignatura de PDI*
+1. **Fork** el repositorio
+2. Crea una **branch** para tu feature
+3. Implementa cambios con **tests**
+4. Asegura que **final_check.py** pase
+5. Envía **pull request**
+
+### Estándares de Código
+
+- **Type hints** en todas las funciones
+- **Docstrings** en clases y métodos públicos
+- **Error handling** robusto
+- **Logging** apropiado
+- **Sin emojis** en código o documentación
+
+## Licencia y Créditos
+
+Este proyecto es desarrollado con fines educativos para demostrar técnicas avanzadas de procesamiento digital de imágenes y machine learning aplicado a la clasificación de animales.
+
+### Tecnologías Utilizadas
+
+- OpenCV para procesamiento de imágenes
+- TensorFlow/TensorFlow Lite para machine learning
+- Wikipedia API para información de especies
+- SQLite para persistencia de datos
+
+## Soporte y Documentación
+
+- **Documentación técnica**: [TECHNICAL_DOCS.md](TECHNICAL_DOCS.md)
+- **Guía Raspberry Pi**: [RASPBERRY_PI_SETUP.md](RASPBERRY_PI_SETUP.md)
+- **Instalación Pi**: [INSTALL_RPI.md](INSTALL_RPI.md)
+- **Issues**: Reporta problemas en el repositorio
+
+Para soporte específico de Raspberry Pi o problemas de rendimiento, consulta la documentación técnica detallada incluida en el proyecto.

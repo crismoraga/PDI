@@ -1,8 +1,4 @@
 #!/usr/bin/env python3
-"""
-Script de pruebas completas para Pokedex Animal
-"""
-
 import cv2
 import numpy as np
 import time

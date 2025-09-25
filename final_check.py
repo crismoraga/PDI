@@ -3,7 +3,6 @@
 Verificación Final del Proyecto Pokedex Animal
 Muestra el estado completo y resumen del proyecto
 """
-
 import os
 import sys
 import time

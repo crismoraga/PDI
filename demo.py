@@ -2,7 +2,6 @@
 """
 Demo de Pokedex Animal - Versión sin cámara para pruebas
 """
-
 import cv2
 import numpy as np
 import tensorflow as tf

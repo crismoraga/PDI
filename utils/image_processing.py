@@ -1,7 +1,3 @@
-"""
-Módulo para procesamiento de imágenes usando OpenCV y técnicas de PDI
-"""
-
 import cv2
 import numpy as np
 from PIL import Image
@@ -273,6 +269,63 @@ class ImageProcessor:
             return image
             
         return image
+
+    # Nuevas utilidades de características visuales
+    def compute_visual_features(self, image):
+        """Calcular rasgos visuales básicos de la escena.
+
+        Returns:
+            dict: {dominant_color_rgb, dominant_color_hex, relative_size, bbox}
+        """
+        if image is None:
+            return {}
+
+        h, w = image.shape[:2]
+        total_area = float(h * w)
+
+        # BBox del objeto mayor
+        bboxes = self.detect_objects(image)
+        bbox = None
+        relative_size = None
+        if bboxes:
+            x1, y1, x2, y2 = max(bboxes, key=lambda b: (b[2]-b[0])*(b[3]-b[1]))
+            bbox = (int(x1), int(y1), int(x2), int(y2))
+            area = float((x2 - x1) * (y2 - y1))
+            if total_area > 0:
+                relative_size = area / total_area
+
+        # Color dominante (kmeans k=3 sobre muestreo)
+        sample = cv2.resize(image, (64, 64))
+        data = sample.reshape((-1, 3)).astype(np.float32)
+        criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 10, 1.0)
+        _, labels, centers = cv2.kmeans(data, 3, None, criteria, 5, cv2.KMEANS_RANDOM_CENTERS)
+        counts = np.bincount(labels.flatten())
+        idx = int(np.argmax(counts))
+        dom_bgr = centers[idx].astype(np.uint8).tolist()
+        # Convertir a RGB
+        dom_rgb = [int(dom_bgr[2]), int(dom_bgr[1]), int(dom_bgr[0])]
+        dom_hex = '#%02x%02x%02x' % tuple(dom_rgb)
+
+        result = {
+            "dominant_color_rgb": f"{dom_rgb[0]},{dom_rgb[1]},{dom_rgb[2]}",
+            "dominant_color_hex": dom_hex,
+            "relative_size": relative_size,
+            "bbox": None if bbox is None else f"{bbox[0]},{bbox[1]},{bbox[2]},{bbox[3]}",
+        }
+        return result
+
+    @staticmethod
+    def describe_visual_features(features: dict) -> str:
+        parts = []
+        if not features:
+            return ""
+        if features.get("dominant_color_hex"):
+            parts.append(f"Color dominante: {features['dominant_color_hex']} ({features.get('dominant_color_rgb','')})")
+        if features.get("relative_size") is not None:
+            parts.append(f"Tamaño relativo: {features['relative_size']:.1%}")
+        if features.get("bbox"):
+            parts.append(f"BBox: {features['bbox']}")
+        return " | ".join(parts)
 
 def test_image_processing():
     """Función de prueba para procesamiento de imágenes"""

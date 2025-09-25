@@ -147,7 +147,7 @@ class AnimalClassifier:
             return best_animal, float(best_confidence)
             
         except Exception as e:
-            print(f"❌ Error en predicción: {str(e)}")
+            print(f" Error en predicción: {str(e)}")
             return "Error en predicción", 0.0
             
     def _translate_to_spanish(self, english_name):
