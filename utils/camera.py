@@ -54,7 +54,7 @@ class CameraCapture:
             self.cap.release()
             self.cap = None
             
-    print("Camara detenida")
+        print("Camara detenida")
         
     def _capture_loop(self):
         """Loop de captura en hilo separado"""

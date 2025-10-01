@@ -1,0 +1,101 @@
+2025-09-30 22:35:21,189 - __main__ - INFO - Starting Pokedex Ultra - Windows Edition
+2025-09-30 22:35:21,250 - __main__ - INFO - AI Engine initialized on device: cpu
+2025-09-30 22:35:21,250 - __main__ - WARNING - YOLOv8 model not found at model\ultra\yolov8x.pt
+2025-09-30 22:35:21,250 - __main__ - WARNING - EfficientNet model not found at model\ultra\efficientnet_b7.h5
+2025-09-30 22:35:22,216 - __main__ - INFO - MobileNet model loaded successfully
+2025-09-30 22:35:28,329 - __main__ - INFO - All processing threads started successfully
+2025-09-30 22:36:33,665 - __main__ - INFO - Shutting down application
+2025-09-30 22:36:37,976 - __main__ - INFO - Application terminated
+2025-09-30 22:37:38,183 - __main__ - INFO - Starting Pokedex Ultra - Windows Edition
+2025-09-30 22:37:38,262 - __main__ - INFO - AI Engine initialized on device: cpu
+2025-09-30 22:37:38,262 - __main__ - WARNING - YOLOv8 model not found at model\ultra\yolov8x.pt
+2025-09-30 22:37:38,262 - __main__ - WARNING - EfficientNet model not found at model\ultra\efficientnet_b7.h5
+2025-09-30 22:37:39,047 - __main__ - INFO - MobileNet model loaded successfully
+2025-09-30 22:37:40,494 - __main__ - INFO - All processing threads started successfully
+2025-09-30 22:38:00,602 - __main__ - INFO - Starting Pokedex Ultra - Windows Edition
+2025-09-30 22:38:00,665 - __main__ - INFO - AI Engine initialized on device: cpu
+2025-09-30 22:38:00,667 - __main__ - WARNING - YOLOv8 model not found at model\ultra\yolov8x.pt
+2025-09-30 22:38:00,667 - __main__ - WARNING - EfficientNet model not found at model\ultra\efficientnet_b7.h5
+2025-09-30 22:38:01,504 - __main__ - INFO - MobileNet model loaded successfully
+2025-09-30 22:38:01,938 - __main__ - ERROR - Failed to start camera
+2025-09-30 22:58:12,137 - __main__ - INFO - Starting Pokedex Ultra - Windows Edition
+2025-09-30 22:58:12,205 - utils.gpu_detector - WARNING - No se detectó GPU. Usando CPU.
+2025-09-30 22:58:12,205 - __main__ - INFO - ============================================================
+2025-09-30 22:58:12,205 - __main__ - INFO - GPU CONFIGURATION
+2025-09-30 22:58:12,205 - __main__ - INFO - ============================================================
+2025-09-30 23:01:49,511 - __main__ - INFO - Starting Pokedex Ultra - Windows Edition
+2025-09-30 23:01:49,580 - utils.gpu_detector - WARNING - No se detectó GPU. Usando CPU.
+2025-09-30 23:01:49,580 - __main__ - INFO - ============================================================
+2025-09-30 23:01:49,580 - __main__ - INFO - GPU CONFIGURATION
+2025-09-30 23:01:49,580 - __main__ - INFO - ============================================================
+2025-09-30 23:01:49,580 - __main__ - INFO - GPU Type: None
+2025-09-30 23:01:49,581 - __main__ - INFO - GPU Name: None
+2025-09-30 23:01:49,581 - __main__ - INFO - Device: cpu
+2025-09-30 23:01:49,581 - __main__ - INFO - CUDA Available: False
+2025-09-30 23:01:49,581 - __main__ - INFO - ROCm Available: False
+2025-09-30 23:01:49,581 - __main__ - INFO - ============================================================
+2025-09-30 23:01:49,581 - utils.gpu_detector - INFO - PyTorch usando CPU
+2025-09-30 23:01:49,581 - __main__ - INFO - AI Engine initialized on device: cpu
+2025-09-30 23:01:49,581 - __main__ - WARNING - YOLOv8 model not found at model\ultra\yolov8x.pt
+2025-09-30 23:01:49,581 - __main__ - WARNING - EfficientNet model not found at model\ultra\efficientnet_b7.h5
+2025-09-30 23:01:50,339 - __main__ - INFO - MobileNet model loaded successfully
+2025-09-30 23:01:56,673 - __main__ - INFO - All processing threads started successfully
+2025-09-30 23:04:38,569 - __main__ - INFO - Shutting down application
+2025-09-30 23:04:40,881 - __main__ - INFO - Application terminated
+2025-09-30 23:08:23,670 - __main__ - INFO - Starting Pokedex Ultra - Windows Edition
+2025-09-30 23:08:23,749 - utils.gpu_detector - WARNING - No se detectó GPU. Usando CPU.
+2025-09-30 23:08:23,749 - __main__ - INFO - ============================================================
+2025-09-30 23:08:23,749 - __main__ - INFO - GPU CONFIGURATION
+2025-09-30 23:08:23,749 - __main__ - INFO - ============================================================
+2025-09-30 23:08:23,749 - __main__ - INFO - GPU Type: None
+2025-09-30 23:08:23,749 - __main__ - INFO - GPU Name: None
+2025-09-30 23:08:23,749 - __main__ - INFO - Device: cpu
+2025-09-30 23:08:23,751 - __main__ - INFO - CUDA Available: False
+2025-09-30 23:08:23,751 - __main__ - INFO - ROCm Available: False
+2025-09-30 23:08:23,751 - __main__ - INFO - ============================================================
+2025-09-30 23:08:23,751 - utils.gpu_detector - INFO - PyTorch usando CPU
+2025-09-30 23:08:23,751 - __main__ - INFO - AI Engine initialized on device: cpu
+2025-09-30 23:08:23,751 - __main__ - WARNING - YOLOv8 model not found at model\ultra\yolov8x.pt
+2025-09-30 23:08:23,752 - __main__ - WARNING - EfficientNet model not found at model\ultra\efficientnet_b7.h5
+2025-09-30 23:08:24,510 - __main__ - INFO - MobileNet model loaded successfully
+2025-09-30 23:08:25,971 - __main__ - INFO - All processing threads started successfully
+2025-09-30 23:09:11,153 - __main__ - INFO - Shutting down application
+2025-09-30 23:09:15,453 - __main__ - INFO - Application terminated
+2025-09-30 23:16:29,406 - __main__ - INFO - Starting Pokedex Ultra - Windows Edition
+2025-09-30 23:16:29,472 - utils.gpu_detector - WARNING - No se detectó GPU. Usando CPU.
+2025-09-30 23:16:29,472 - __main__ - INFO - ============================================================
+2025-09-30 23:16:29,472 - __main__ - INFO - GPU CONFIGURATION
+2025-09-30 23:16:29,472 - __main__ - INFO - ============================================================
+2025-09-30 23:16:29,472 - __main__ - INFO - GPU Type: None
+2025-09-30 23:16:29,472 - __main__ - INFO - GPU Name: None
+2025-09-30 23:16:29,472 - __main__ - INFO - Device: cpu
+2025-09-30 23:16:29,474 - __main__ - INFO - CUDA Available: False
+2025-09-30 23:16:29,474 - __main__ - INFO - ROCm Available: False
+2025-09-30 23:16:29,474 - __main__ - INFO - ============================================================
+2025-09-30 23:16:29,474 - utils.gpu_detector - INFO - PyTorch usando CPU
+2025-09-30 23:16:29,474 - __main__ - INFO - AI Engine initialized on device: cpu
+2025-09-30 23:16:29,474 - __main__ - WARNING - YOLOv8 model not found at model\ultra\yolov8x.pt
+2025-09-30 23:16:29,474 - __main__ - WARNING - EfficientNet model not found at model\ultra\efficientnet_b7.h5
+2025-09-30 23:16:30,245 - __main__ - INFO - MobileNet model loaded successfully
+2025-09-30 23:16:31,705 - __main__ - INFO - All processing threads started successfully
+2025-09-30 23:17:07,312 - __main__ - INFO - Shutting down application
+2025-09-30 23:17:09,628 - __main__ - INFO - Application terminated
+2025-09-30 23:22:40,461 - __main__ - INFO - Starting Pokedex Ultra - Windows Edition
+2025-09-30 23:22:40,536 - utils.gpu_detector - WARNING - No se detectó GPU. Usando CPU.
+2025-09-30 23:22:40,536 - __main__ - INFO - ============================================================
+2025-09-30 23:22:40,536 - __main__ - INFO - GPU CONFIGURATION
+2025-09-30 23:22:40,536 - __main__ - INFO - ============================================================
+2025-09-30 23:22:40,536 - __main__ - INFO - GPU Type: None
+2025-09-30 23:22:40,536 - __main__ - INFO - GPU Name: None
+2025-09-30 23:22:40,536 - __main__ - INFO - Device: cpu
+2025-09-30 23:22:40,537 - __main__ - INFO - CUDA Available: False
+2025-09-30 23:22:40,537 - __main__ - INFO - ROCm Available: False
+2025-09-30 23:22:40,537 - __main__ - INFO - ============================================================
+2025-09-30 23:22:40,537 - utils.gpu_detector - INFO - PyTorch usando CPU
+2025-09-30 23:22:40,537 - __main__ - INFO - AI Engine initialized on device: cpu
+2025-09-30 23:22:40,537 - __main__ - WARNING - YOLOv8 model not found at model\ultra\yolov8x.pt
+2025-09-30 23:22:40,537 - __main__ - WARNING - EfficientNet model not found at model\ultra\efficientnet_b7.h5
+2025-09-30 23:22:41,308 - __main__ - INFO - MobileNet model loaded successfully
+2025-09-30 23:22:42,721 - __main__ - INFO - All processing threads started successfully
+2025-09-30 23:23:52,280 - __main__ - INFO - Shutting down application
+2025-09-30 23:23:56,596 - __main__ - INFO - Application terminated
